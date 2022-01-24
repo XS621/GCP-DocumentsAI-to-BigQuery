@@ -3,7 +3,7 @@ steps:
   entrypoint: /bin/sh
   # Run pip install and pytest in the same build step
   # (pip packages won't be preserved in future steps!)
-  args: [-c,  'git clone https://github.com/XS621/GCP-DocumentsAI-to-BigQuery.git &&  pip install -r GCP-DocumentsAI-to-BigQuery/requirements.txt ']
+  args: [-c,  'git clone https://github.com/XS621/GCP-DocumentsAI-to-BigQuery.git && cd GCP-DocumentsAI-to-BigQuery &&  pip install -r requirements.txt ']
   dir: '/'
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['functions', 'deploy', 'DocAI_Demo_GitHubIntegration', '--trigger-resource', 'datalabs-int-bigdata-pmo','--trigger-event','google.storage.object.finalize', '--runtime', 'python39', '--entry-point', 'hello_gcs']
