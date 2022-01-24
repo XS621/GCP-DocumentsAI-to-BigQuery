@@ -3,8 +3,6 @@ steps:
   entrypoint: /bin/sh
   # Run pip install and pytest in the same build step
   # (pip packages won't be preserved in future steps!)
-  args: [-c,  'pip install -r requirements.txt ']
-  dir: '/'
+  args: [-c,  'pip install -r scripts/requirements.txt ']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['functions', 'deploy', 'DocAI_Demo_GitHubIntegration', '--trigger-resource', 'datalabs-int-bigdata-pmo','--trigger-event','google.storage.object.finalize', '--runtime', 'python39', '--entry-point', 'hello_gcs']
-  dir: '/'
