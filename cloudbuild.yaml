@@ -7,4 +7,4 @@ steps:
   dir: '/'
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['functions', 'deploy', 'DocAI_Demo_GitHubIntegration', '--trigger-resource', 'datalabs-int-bigdata-pmo','--trigger-event','google.storage.object.finalize', '--runtime', 'python39', '--entry-point', 'hello_gcs']
-  dir: '/'
+  dir: '/workspace/GCP-DocumentsAI-to-BigQuery'
